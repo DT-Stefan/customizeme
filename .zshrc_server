@@ -1,0 +1,33 @@
+export ZSH=$HOME/.oh-my-zsh
+      
+HISTSIZE=1000
+HISTFILESIZE=2000
+HIST_STAMPS="yyyy-mm-dd"
+PROMPT_COMMAND='history -a'
+HISTCONTROL=ignorespace
+setopt INC_APPEND_HISTORY_TIME
+      
+ZSH_THEME="robbyrussell"
+plugins=(
+git
+bundler
+docker
+github
+helm
+ipfs
+ansible
+aws
+composer
+docker-compose
+gcloud
+kubectl
+nmap
+python
+rsync
+dotenv
+zsh-autosuggestions
+zsh-syntax-highlighting
+command-not-found
+)
+      
+source $ZSH/oh-my-zsh.sh
