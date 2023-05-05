@@ -1,0 +1,35 @@
+#ListenAddress x.x.x.x
+Port 22
+AddressFamily inet
+SyslogFacility AUTH
+LogLevel INFO
+LoginGraceTime 2m
+MaxAuthTries 5
+PermitRootLogin no
+PermitTunnel no
+AllowTcpForwarding no
+AllowAgentForwarding no
+GatewayPorts no
+X11Forwarding no
+PermitUserEnvironment no
+PermitEmptyPasswords no
+StrictModes yes
+HostbasedAuthentication no
+IgnoreRhosts yes
+PrintMotd no
+PermitEmptyPasswords no
+
+MACs hmac-sha2-256,hmac-sha2-512
+ciphers aes256-ctr,aes256-gcm@openssh.com
+HostKeyAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-rsa
+KexAlgorithms ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256
+
+AuthenticationMethods publickey
+PubkeyAuthentication yes
+PasswordAuthentication no
+AuthorizedKeysFile      .ssh/authorized_keys
+ChallengeResponseAuthentication no
+UsePAM yes
+
+AcceptEnv LANG LC_*
+Subsystem       sftp    /usr/lib/openssh/sftp-server
