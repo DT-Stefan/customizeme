@@ -16,6 +16,7 @@ setopt INC_APPEND_HISTORY_TIME
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 ZLE_RPROMPT_INDENT=0
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 alias hh=hstr                    # hh to be alias for hstr
 alias h=hstr                    # hh to be alias for hstr
