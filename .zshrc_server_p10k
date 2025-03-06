@@ -47,21 +47,6 @@ alias chgrp='chgrp --preserve-root'  ## Parenting changing perms on / #
 
 plugins=(
 git
-bundler
-docker
-github
-helm
-ipfs
-ansible
-aws
-composer
-docker-compose
-gcloud
-kubectl
-nmap
-python
-rsync
-dotenv
 zsh-autosuggestions
 zsh-syntax-highlighting
 command-not-found
