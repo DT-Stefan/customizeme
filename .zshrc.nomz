@@ -13,16 +13,19 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /etc/zsh_command_not_found
 
-#bindkey -e
-
+# history settings
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=2000
-HIST_STAMPS="yyyy-mm-dd"
-PROMPT_COMMAND='history -a'
-HISTCONTROL=ignorespace
-setopt INC_APPEND_HISTORY_TIME
+HISTFILE=~/.zsh_history
+HISTSIZE=1000
+SAVEHIST=2000
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_space
+setopt hist_verify
 
+# alias
 alias hh=hstr                    # hh to be alias for hstr
 alias h=hstr                    # hh to be alias for hstr
 alias si='sudo -i'
@@ -43,17 +46,27 @@ alias iptlistout='sudo /sbin/iptables -L OUTPUT -n -v --line-numbers' ## display
 alias iptlistfw='sudo /sbin/iptables -L FORWARD -n -v --line-numbers' ## display all rules #
 alias firewall=iptlist
 alias rm='rm -I --preserve-root' ## do not delete / or prompt if deleting more than 3 files at a time #
-alias mv='mv -i' ## with confirmation #
-alias cp='cp -i' ## with confirmation #
 alias ln='ln -i' ## with confirmation #
 alias chown='chown --preserve-root'  ## Parenting changing perms on / #
 alias chmod='chmod --preserve-root'  ## Parenting changing perms on / #
 alias chgrp='chgrp --preserve-root'  ## Parenting changing perms on / #
 
 # The following lines were added by compinstall
-#zstyle :compinstall filename '~/.zshrc'
-#autoload -Uz compinit
-#compinit
+zstyle :compinstall filename '~/.zshrc'
+autoload -Uz compinit
+compinit
+
+# Enable history search based on current input
+autoload -Uz history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+# Bind arrow keys to scroll through (entered commands)
+# up/down arrow
+bindkey '^[[A' history-beginning-search-backward-end  # Up arrow
+bindkey '^[[B' history-beginning-search-forward-end   # Down arrow
+# shift+up/down arrow (better for SSH)
+bindkey '^[[1;2A' history-beginning-search-backward-end  # Up arrow
+bindkey '^[[1;2B' history-beginning-search-forward-end   # Down arrow
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
